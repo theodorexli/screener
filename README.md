@@ -4,7 +4,8 @@
 
 Hand-curated equity watchlists, technicals, heatmap/table views, and AI chat — backed by Cloudflare Workers.
 
-**Live:** https://screener.txl.app
+**Live:** https://screener.txl.app  
+**Source:** [GitHub](https://github.com/theodorexli/screener) · [GitLab](https://gitlab.com/sixmo19/screener)
 
 ## Features
 
