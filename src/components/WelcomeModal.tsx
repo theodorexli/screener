@@ -186,7 +186,7 @@ export function WelcomeModal({ open, onOpenChange }: WelcomeModalProps) {
 
     const carousel = carouselEl;
 
-    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
     let rafId: number | null = null;
 
     // Helper function to update page state

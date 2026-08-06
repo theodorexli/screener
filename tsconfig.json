@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* Path aliases */
+    /* Path aliases — relative to this file; do not set deprecated baseUrl */
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -28,4 +28,3 @@
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
-
