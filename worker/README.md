@@ -25,7 +25,7 @@ npx wrangler login
 
 ```bash
 npx wrangler secret put ALLOWED_ORIGINS
-# Example: http://localhost:5173,https://YOUR_USERNAME.gitlab.io
+# Example: http://localhost:5173,https://your-frontend.example
 npx wrangler secret put NOTION_DATABASE_ID
 npx wrangler secret put ALPACA_API_KEY
 npx wrangler secret put ALPACA_API_SECRET

@@ -7,10 +7,9 @@
 import { StockTicker } from '@/data/stockTickers';
 
 // Worker URL - use environment variable or default to relative path (for Vite proxy)
-// In production, this should be set to the deployed worker URL
-// Set via VITE_WORKER_URL environment variable in GitLab CI
+// In production, set VITE_WORKER_URL at build time (CI variable or host env).
 const WORKER_URL = import.meta.env.VITE_WORKER_URL || '';
-// In production, set VITE_PREDICTIONS_WORKER_URL (GitLab CI does this for TXL).
+// In production, set VITE_PREDICTIONS_WORKER_URL at build time.
 // Locally, leave empty to use the Vite proxy.
 const PREDICTIONS_WORKER_URL = import.meta.env.VITE_PREDICTIONS_WORKER_URL || '';
 

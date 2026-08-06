@@ -4,8 +4,7 @@
 
 Hand-curated equity watchlists, technicals, heatmap/table views, and AI chat — backed by Cloudflare Workers.
 
-**Live:** https://screener.txl.app  
-**Source:** [GitHub](https://github.com/theodorexli/screener) · [GitLab](https://gitlab.com/sixmo19/screener)
+**Live:** https://screener.txl.app
 
 ## Features
 
@@ -23,7 +22,7 @@ Hand-curated equity watchlists, technicals, heatmap/table views, and AI chat —
 
 ## Stack
 
-- **Frontend**: React + TypeScript + Vite → GitLab Pages (or any static host)
+- **Frontend**: React + TypeScript + Vite → any static host
 - **API**: Cloudflare Worker (`worker/`) — Alpaca, Notion, Gemini, Logo.dev
 - **Predictions**: Cloudflare Worker (`worker-predictions/`) — public Kalshi/Polymarket APIs
 
@@ -98,7 +97,7 @@ npx wrangler secret put ALLOWED_ORIGINS
 npm run deploy
 ```
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for GitLab Pages + full troubleshooting.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for static hosting + full troubleshooting.
 
 ## Environment variables (frontend)
 

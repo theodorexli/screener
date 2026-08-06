@@ -1,13 +1,13 @@
 # Deployment Guide
 
-Deploy the Cloudflare Workers (API) and the Vite frontend (static hosting). TXL uses GitLab Pages; any static host works if you set the same build env vars.
+Deploy the Cloudflare Workers (API) and the Vite frontend to any static host. The same build env vars work everywhere.
 
 ## Prerequisites
 
 - Node.js 20+
 - Cloudflare account with Workers enabled
 - Alpaca, Notion, Gemini, and Logo.dev credentials (see README)
-- Static host (GitLab Pages, Cloudflare Pages, etc.)
+- A static host (Cloudflare Pages, Netlify, Vercel, object storage + CDN, etc.)
 
 ## Part 1: Cloudflare Workers
 
@@ -19,7 +19,7 @@ npm install
 npx wrangler login
 ```
 
-1. Edit nothing TXL-specific into git. Set secrets instead:
+1. Do not commit production origins or database IDs. Set secrets instead:
 
 ```bash
 npx wrangler secret put ALPACA_API_KEY
@@ -53,9 +53,9 @@ No market-data API secrets required (public Kalshi / Polymarket data).
 
 ## Part 2: Frontend
 
-### GitLab Pages (TXL / this repo)
+### CI / Pages
 
-Set CI/CD variables in GitLab (**Settings → CI/CD → Variables**) — do **not** commit them:
+Set these as **CI/CD variables** in your host (do **not** commit them):
 
 | Variable | Example |
 |----------|---------|
@@ -63,13 +63,13 @@ Set CI/CD variables in GitLab (**Settings → CI/CD → Variables**) — do **no
 | `VITE_PREDICTIONS_WORKER_URL` | `https://your-predictions.workers.dev` |
 | `VITE_PUBLIC_POSTHOG_KEY` | optional PostHog project key |
 
-`.gitlab-ci.yml` reads these at build time. Forks must set their own.
+This repo includes a sample Pages CI pipeline. Configure the same variables in your host’s CI settings; forks must set their own values.
 
 ```bash
 git push origin main
 ```
 
-### Other hosts
+### Manual / other hosts
 
 ```bash
 VITE_WORKER_URL=https://your-api.workers.dev \
@@ -78,7 +78,7 @@ VITE_PUBLIC_POSTHOG_KEY=phc_optional \
 npm ci && npm run build
 ```
 
-Serve the `dist/` folder. SPA fallback: serve `index.html` for unknown paths (this repo copies `404.html` for GitLab Pages).
+Serve the `dist/` folder. SPA fallback: serve `index.html` for unknown paths (the sample CI copies `404.html` for that).
 
 ## Part 3: Verify
 
@@ -160,4 +160,4 @@ Per-IP rate limit on `/api/chat` (~30 requests/minute). Wait and retry. For publ
 - Cloudflare Workers free tier: 100k requests/day
 - Alpaca free tier: rate-limited market data
 - Gemini / Logo.dev: usage-based — chat is the main variable cost
-- GitLab Pages: free for public projects
+- Static hosting: depends on your provider
