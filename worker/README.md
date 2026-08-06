@@ -21,25 +21,12 @@ Make sure you're logged in to Cloudflare:
 npx wrangler login
 ```
 
-### 3. Update Configuration
-
-Edit `wrangler.toml` and update the `ALLOWED_ORIGINS` variable with your actual domain:
-
-```toml
-[vars]
-ALLOWED_ORIGINS = "http://localhost:5173,http://localhost:4173,https://YOUR_USERNAME.gitlab.io"
-```
-
-### 4. Configure vars + secrets
-
-In `wrangler.toml` `[vars]`, set:
-
-- `ALLOWED_ORIGINS` — your frontend origins
-- `NOTION_DATABASE_ID` — your Notion database ID
-
-Then set secrets:
+### 3. Set secrets
 
 ```bash
+npx wrangler secret put ALLOWED_ORIGINS
+# Example: http://localhost:5173,https://YOUR_USERNAME.gitlab.io
+npx wrangler secret put NOTION_DATABASE_ID
 npx wrangler secret put ALPACA_API_KEY
 npx wrangler secret put ALPACA_API_SECRET
 npx wrangler secret put NOTION_API_KEY
@@ -181,8 +168,8 @@ Fetch table configuration including default color rules.
 ### CORS Issues
 
 If you're getting CORS errors, make sure:
-1. Your domain is added to `ALLOWED_ORIGINS` in `wrangler.toml`
-2. You've redeployed the worker after updating the configuration
+1. `ALLOWED_ORIGINS` secret includes your frontend domain
+2. You've redeployed the worker after updating the secret
 
 ### API Key Issues
 

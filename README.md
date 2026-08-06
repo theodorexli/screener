@@ -89,12 +89,12 @@ Then:
 npm run deploy
 ```
 
-Deploy predictions (no secrets required):
+Deploy predictions:
 
 ```bash
 cd worker-predictions
 npm install
-# Update ALLOWED_ORIGINS in wrangler.toml
+npx wrangler secret put ALLOWED_ORIGINS
 npm run deploy
 ```
 

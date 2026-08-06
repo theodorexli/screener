@@ -19,20 +19,20 @@ npm install
 npx wrangler login
 ```
 
-1. Edit `wrangler.toml`:
-   - `ALLOWED_ORIGINS` — your frontend origin(s)
-   - `NOTION_DATABASE_ID` — your Notion database ID
-2. Set secrets:
+1. Edit nothing TXL-specific into git. Set secrets instead:
 
 ```bash
 npx wrangler secret put ALPACA_API_KEY
 npx wrangler secret put ALPACA_API_SECRET
 npx wrangler secret put NOTION_API_KEY
+npx wrangler secret put NOTION_DATABASE_ID
 npx wrangler secret put GEMINI_API_KEY
 npx wrangler secret put LOGO_DEV_PUBLISHABLE_KEY
+npx wrangler secret put ALLOWED_ORIGINS
+# e.g. http://localhost:5173,https://your-frontend.example
 ```
 
-3. Deploy:
+2. Deploy:
 
 ```bash
 npm run deploy
@@ -45,11 +45,11 @@ Note the worker URL (e.g. `https://screener.YOUR_SUBDOMAIN.workers.dev`).
 ```bash
 cd worker-predictions
 npm install
-# Update ALLOWED_ORIGINS in wrangler.toml
+npx wrangler secret put ALLOWED_ORIGINS
 npm run deploy
 ```
 
-No API secrets required (public Kalshi / Polymarket data).
+No market-data API secrets required (public Kalshi / Polymarket data).
 
 ## Part 2: Frontend
 
@@ -115,7 +115,7 @@ npm run dev
 
 ### CORS errors
 
-1. Add your frontend origin to `ALLOWED_ORIGINS` in both workers’ `wrangler.toml`
+1. Set `ALLOWED_ORIGINS` as a Worker secret (both workers) to include your frontend origin
 2. Redeploy workers
 3. Hard-refresh the browser
 
@@ -152,8 +152,8 @@ Per-IP rate limit on `/api/chat` (~30 requests/minute). Wait and retry. For publ
 | `NOTION_API_KEY` | secret |
 | `GEMINI_API_KEY` | secret |
 | `LOGO_DEV_PUBLISHABLE_KEY` | secret |
-| `NOTION_DATABASE_ID` | `wrangler.toml` `[vars]` |
-| `ALLOWED_ORIGINS` | `wrangler.toml` `[vars]` |
+| `NOTION_DATABASE_ID` | secret |
+| `ALLOWED_ORIGINS` | secret |
 
 ## Cost notes
 

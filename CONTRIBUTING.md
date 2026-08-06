@@ -33,7 +33,8 @@ See `README.md` and `DEPLOYMENT.md`. Required for a full local/production stack:
 
 - `ALPACA_API_KEY`, `ALPACA_API_SECRET`
 - `NOTION_API_KEY`
-- `NOTION_DATABASE_ID` (also settable in `worker/wrangler.toml` `[vars]`)
+- `NOTION_DATABASE_ID` (Worker secret)
+- `ALLOWED_ORIGINS` (Worker secret)
 - `GEMINI_API_KEY`
 - `LOGO_DEV_PUBLISHABLE_KEY`
 
