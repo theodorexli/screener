@@ -1,0 +1,67 @@
+{
+  "defaultSort": {
+    "column": "rsi",
+    "direction": "asc"
+  },
+  "defaultColorRules": {
+    "rsi": [
+      {
+        "operator": "<",
+        "value": 30.00,
+        "color": "#ef4444"
+      },
+      {
+        "operator": ">",
+        "value": 70.00,
+        "color": "#22c55e"
+      }
+    ],
+    "macd": [
+      {
+        "operator": ">",
+        "value": 0,
+        "color": "#22c55e"
+      },
+      {
+        "operator": "<",
+        "value": 0,
+        "color": "#ef4444"
+      }
+    ],
+    "changePercent": [
+      {
+        "operator": ">",
+        "value": 0,
+        "color": "#22c55e"
+      },
+      {
+        "operator": "<",
+        "value": 0,
+        "color": "#ef4444"
+      }
+    ],
+    "change": [
+      {
+        "operator": ">",
+        "value": 0,
+        "color": "#22c55e"
+      },
+      {
+        "operator": "<",
+        "value": 0,
+        "color": "#ef4444"
+      }
+    ],
+    "vwap": [
+      {
+        "operator": "vwap_below_price",
+        "color": "#22c55e"
+      },
+      {
+        "operator": "vwap_above_price",
+        "color": "#ef4444"
+      }
+    ]
+  }
+}
+

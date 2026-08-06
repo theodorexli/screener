@@ -1,0 +1,28 @@
+TXL Screener
+
+TXL Screener helps investors track high-priority stocks, monitor market momentum, and make more informed timing decisions.
+
+What it offers
+- Hand-curated watchlists focused on important equities
+- Heatmap and detailed views for quick market scanning
+- Real-time-style technical signal tracking (including RSI, MACD, and EMAs)
+- AI chat to ask questions about watchlists and recent market context
+- Thesis posts with human-written bull and bear viewpoints
+
+Where the data comes from
+- Stock prices, technical indicators, and related market news are provided by Alpaca Markets.
+- Watchlists and thesis posts are curated and stored in Notion, then surfaced in the app.
+- AI chat answers are generated with Google Gemini, using your questions plus recent context such as news when available.
+
+How to use it
+- Spot oversold/overbought conditions for potential entries and exits
+- Compare momentum across sectors and symbols
+- Review supporting context before making portfolio moves
+- Use smaller, staged entries rather than all-at-once decisions
+
+Important notes
+- Data from Alpaca can be delayed; always confirm with your broker or primary data source.
+- This product is for research and education only, not financial advice.
+
+Live app
+https://screener.txl.app

@@ -1,0 +1,29 @@
+image: node:20
+
+cache:
+  paths:
+    - node_modules/
+
+pages:
+  stage: deploy
+  # Set these in GitLab → Settings → CI/CD → Variables (masked/protected as appropriate):
+  #   VITE_WORKER_URL
+  #   VITE_PREDICTIONS_WORKER_URL
+  #   VITE_PUBLIC_POSTHOG_KEY (optional)
+  # Do not commit production URLs or analytics keys here — forks would inherit them.
+  script:
+    - |
+      if [ -z "$VITE_WORKER_URL" ]; then
+        echo "VITE_WORKER_URL is required. Set it in GitLab CI/CD variables."
+        exit 1
+      fi
+    - npm ci
+    - npm run build
+    - rm -rf public
+    - mv dist public
+    - cp public/index.html public/404.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

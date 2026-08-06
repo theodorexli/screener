@@ -1,0 +1,25 @@
+name = "screener"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# Deploy with: wrangler deploy
+#
+# Required secrets (never commit these):
+#   wrangler secret put ALPACA_API_KEY
+#   wrangler secret put ALPACA_API_SECRET
+#   wrangler secret put NOTION_API_KEY
+#   wrangler secret put NOTION_DATABASE_ID
+#   wrangler secret put GEMINI_API_KEY
+#   wrangler secret put LOGO_DEV_PUBLISHABLE_KEY
+#   wrangler secret put ALLOWED_ORIGINS
+#     e.g. http://localhost:5173,https://your-frontend.example
+#
+# Localhost is always allowed in code for development even if omitted here.
+
+# Optional non-secret defaults for local `wrangler dev` only.
+# Production: set ALLOWED_ORIGINS and NOTION_DATABASE_ID as secrets (see above).
+# Do not put production origins or database IDs in this committed file.
+
+[env.production]
+name = "screener"
+workers_dev = false

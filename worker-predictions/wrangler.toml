@@ -1,0 +1,29 @@
+name = "screener-predictions"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# Deploy with: wrangler deploy
+# Public Kalshi + Polymarket market data — no API secrets required.
+#
+# Set your frontend origins in production:
+#   wrangler secret put ALLOWED_ORIGINS
+#
+# Local: `npm run dev:predictions` (port 8789).
+# Vite proxies /api/predictions there by default.
+# Override: PREDICTIONS_PROXY_TARGET=https://your-worker.workers.dev npm run dev
+
+[vars]
+KALSHI_API_BASE = "https://api.elections.kalshi.com/trade-api/v2"
+POLYMARKET_API_BASE = "https://gamma-api.polymarket.com"
+# Production: wrangler secret put ALLOWED_ORIGINS
+# Localhost is allowed in code for development.
+
+[dev]
+port = 8789
+
+[triggers]
+crons = ["*/3 * * * *"]
+
+[env.production]
+name = "screener-predictions"
+workers_dev = false
